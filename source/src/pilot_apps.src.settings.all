@@ -888,6 +888,9 @@ sources = {
 		"calibrate_pdb_via_sidechain_optimization",
 		"score_protein_ligand_interactions",
 	],
+	"pilot/rui" : [
+                "bootcamp",
+        ],
 	"pilot/rvernon" : [
 		#"calc_pair_stats", # /* Rob Vernon,Documentation Location,Demo Location */
 		#"create_disulfide_database",
