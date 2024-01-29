@@ -8,9 +8,18 @@
 // (c) addressed to University of Washington UW TechTransfer, email: license@u.washington.edu.
 
 #include <iostream>
+#include <basic/options/option.hh>
+#include <devel/init.hh>
+#include <basic/options/keys/in.OptionKeys.gen.hh>
 
-int main() {
-	std::cout << "Hello World!" << std::endl;
-	return 0;
-} 
-
+int
+main( int argc, char ** argv ) {
+	devel::init( argc, argv );
+	utility::vector1< std::string > filenames = basic::options::option[ basic::options::OptionKeys::in::file::s ].value();
+	if ( filenames.size() > 0 ) {
+		std::cout << "You entered: " << filenames[ 1 ] << " as the PDB file to be read" << std::endl;
+	} else {
+		std::cout << "You did not provide a PDB file with the -in::file::s option" << std::endl;
+		return 1;
+	}
+}
