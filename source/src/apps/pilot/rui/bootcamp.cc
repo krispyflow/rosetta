@@ -11,6 +11,9 @@
 #include <basic/options/option.hh>
 #include <devel/init.hh>
 #include <basic/options/keys/in.OptionKeys.gen.hh>
+#include <core/import_pose/import_pose.hh>
+#include <utility/pointer/owning_ptr.hh>
+#include <core/pose/Pose.hh>
 
 int
 main( int argc, char ** argv ) {
