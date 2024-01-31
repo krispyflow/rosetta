@@ -35,91 +35,40 @@
 //Auto Headers
 #include <core/pack/dunbrack/DunbrackRotamer.hh>
 
+namespace protocols {
+namespace bootcamp  {
 
-using namespace protocols::match;
-using namespace protocols::match::upstream;
-
-
-// --------------- Test Class --------------- //
-
-class ProteinSCSamplerTests : public CxxTest::TestSuite {
-
-public:
-
-
-	// --------------- Fixtures --------------- //
-
-	// Define a test fixture (some initial state that several tests share)
-	// In CxxTest, setUp()/tearDown() are executed around each test case. If you need a fixture on the test
-	// suite level, i.e. something that gets constructed once before all the tests in the test suite are run,
-	// suites have to be dynamically created. See CxxTest sample directory for example.
-
-
-	// Shared initialization goes here.
-	void setUp() {
-		core_init();
-	}
-
-	// Shared finalization goes here.
-	void tearDown() {
-	}
-
-
-	// --------------- Test Cases --------------- //
-    void test_hello_world() {
-    TS_ASSERT( true );
-    }
-
-    utility::vector1< std::pair< core::Size, core::Size > >
-    identify_secondary_structure_spans( std::string const & ss_string )
-    {
-      utility::vector1< std::pair< core::Size, core::Size > > ss_boundaries;
-      core::Size strand_start = -1;
-      for ( core::Size ii = 0; ii < ss_string.size(); ++ii ) {
-        if ( ss_string[ ii ] == 'E' || ss_string[ ii ] == 'H'  ) {
-          if ( int( strand_start ) == -1 ) {
-            strand_start = ii;
-          } else if ( ss_string[ii] != ss_string[strand_start] ) {
-            ss_boundaries.push_back( std::make_pair( strand_start+1, ii ) );
-            strand_start = ii;
-          }
-        } else {
-          if ( int( strand_start ) != -1 ) {
-            ss_boundaries.push_back( std::make_pair( strand_start+1, ii ) );
-            strand_start = -1;
-          }
-        }
+utility::vector1< std::pair< core::Size, core::Size > >
+identify_secondary_structure_spans( std::string const & ss_string )
+{
+  utility::vector1< std::pair< core::Size, core::Size > > ss_boundaries;
+  core::Size strand_start = -1;
+  for ( core::Size ii = 0; ii < ss_string.size(); ++ii ) {
+    if ( ss_string[ ii ] == 'E' || ss_string[ ii ] == 'H'  ) {
+      if ( int( strand_start ) == -1 ) {
+        strand_start = ii;
+      } else if ( ss_string[ii] != ss_string[strand_start] ) {
+        ss_boundaries.push_back( std::make_pair( strand_start+1, ii ) );
+        strand_start = ii;
       }
+    } else {
       if ( int( strand_start ) != -1 ) {
-        // last residue was part of a ss-eleemnt
-        ss_boundaries.push_back( std::make_pair( strand_start+1, ss_string.size() ));
+        ss_boundaries.push_back( std::make_pair( strand_start+1, ii ) );
+        strand_start = -1;
       }
-      for ( core::Size ii = 1; ii <= ss_boundaries.size(); ++ii ) {
-        std::cout << "SS Element " << ii << " from residue "
-          << ss_boundaries[ ii ].first << " to "
-          << ss_boundaries[ ii ].second << std::endl;
-      }
-      return ss_boundaries;
     }
-    
-    void test_SS_Span1() {
-        utility::vector1< char > str1 = "   EEEEE   HHHHHHHH  EEEEE   IGNOR EEEEEE   HHHHHHHHHHH  EEEEE  HHHH   ";
-        utility::vector1< std::pair< core::Size, core::Size > > output1 =
-            identify_secondary_structure_spans(str1);
-        
-        utility::vector1 <core::Size> simpleArray = 0;
-        utility::vector1 <core::Size> correctAnswer = {4, 8, 12, 19, 22, 26, 36, 41, 45, 55, 58, 62, 65, 68};
-        
-        for (core::Size ele = 1, ele < output1.size() + 1, ++ele) {
-            simpleArray.push_back(outpu1[ele].first);
-            simpleArray.push_back(outpu1[ele].second);
-        }
-        
-        
-        TS_ASSERT_EQUAL(simpleArray, correctAnswer);
-    }
-
-};
+  }
+  if ( int( strand_start ) != -1 ) {
+    // last residue was part of a ss-eleemnt
+    ss_boundaries.push_back( std::make_pair( strand_start+1, ss_string.size() ));
+  }
+  for ( core::Size ii = 1; ii <= ss_boundaries.size(); ++ii ) {
+    std::cout << "SS Element " << ii << " from residue "
+      << ss_boundaries[ ii ].first << " to "
+      << ss_boundaries[ ii ].second << std::endl;
+  }
+  return ss_boundaries;
+}
 
 
 //Foldtree:
@@ -174,4 +123,9 @@ fold_tree_from_dssp_string(std::string const & ss_string) {
         ft.add_edge(loopCenter[pE], segbound[pE + 1].first - 1, core::kinematics::Edge::PEPTIDE);
     }
     return ft;
+}
+
+
+
+}
 }

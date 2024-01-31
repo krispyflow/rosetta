@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #
 # (c) Copyright Rosetta Commons Member Institutions.
 # (c) This file is part of the Rosetta software suite and is made available under license.
