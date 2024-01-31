@@ -13,12 +13,15 @@
 #include <basic/options/keys/in.OptionKeys.gen.hh>
 #include <core/import_pose/import_pose.hh>
 #include <utility/pointer/owning_ptr.hh>
+#include <utility/vector1.hh>
+
 #include <core/pose/Pose.hh>
 #include <core/scoring/ScoreFunctionFactory.hh>
 #include <core/scoring/ScoreFunction.hh>
 #include <protocols/moves/MonteCarlo.hh>
 #include <numeric/random/random.hh>
 #include <numeric/random/uniform.hh>
+
 #include <protocols/moves/PyMOLMover.hh>
 #include <core/pack/task/PackerTask.hh>
 #include <core/pack/pack_rotamers.hh>
@@ -56,7 +59,10 @@ main( int argc, char ** argv ) {
         protocols::moves::PyMOLObserverOP the_observer = protocols::moves::AddPyMOLObserver( *mypose, true, 0 );
         the_observer->pymol().apply( *mypose);
          
-        for (int itr = 0; itr < 500; ++itr) {
+        int acceptCount = 0;
+        int totalItr = 500;
+        
+        for (int itr = 0; itr < totalItr; ++itr) {
             core::Real pert1 = numeric::random::gaussian();
             //… code here to get a random number
             core::Real pert2 = numeric::random::gaussian();
@@ -85,7 +91,14 @@ main( int argc, char ** argv ) {
             *mypose = copy_pose;
 
             mc1.boltzmann(*mypose);
+            int modul = itr % 100;
+            if (modul == 0) {
+                if (mc1.accept() == true) {
+                    ++acceptCount;
+                }
+            }
         }
+        core::Real acceptRate = acceptCount / (totalItr/100);
         
 	} else {
 		std::cout << "You did not provide a PDB file with the -in::file::s option" << std::endl;
