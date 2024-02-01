@@ -1,0 +1,289 @@
+##############################################################################################################
+#
+# Rosetta crash log. Please submit the contents of this file to http://crash.rosettacommons.org/
+# or use the script Rosetta/main/source/scripts/python/public/report_crashes.py
+#
+
+[START_CRASH_REPORT]
+[ROSETTA_VERSION]: 0.0.dev0
+[COMMIT_DATE]: 2024-01-29T14:02:41
+[APPLICATION]: bin/bootcamp.default.macosclangdebug
+[MODE]: Debug
+[EXTRAS]: default
+[OS]: Apple Mac OS X
+[COMPILER]: Clang version "15.0.0 (clang-1500.1.0.2.5)"
+[STDLIB]: libc++ version 160006
+[START_OPTIONS]
+ -in:ignore_unrecognized_res -in:path:database=/Users/apple/Downloads/rosetta/rosetta/database/ -in:file:s=1UBQ.pdb.gz
+
+[END_OPTIONS]
+
+[START_BACKTRACE]: RAW_LIBC
+0   libutility.dylib                    0x0000000126097abf backtrace_string(int) + 95
+1   libutility.dylib                    0x00000001260e77d7 utility::excn::Exception::Exception(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 119
+2   libutility.dylib                    0x000000012609ce95 utility::UtilityExitException::UtilityExitException(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 117
+3   libutility.dylib                    0x000000012609cd2b utility::UtilityExitException::UtilityExitException(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 43
+4   libutility.dylib                    0x000000012609ccba utility::exit(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, int) + 74
+5   libcore.6.dylib                     0x0000000113ce7f11 core::import_pose::pose_from_file(core::pose::Pose&, core::chemical::ResidueTypeSet const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, core::import_pose::ImportPoseOptions const&, bool, core::import_pose::FileType) + 1025
+6   libcore.6.dylib                     0x0000000113ce700f core::import_pose::pose_from_file(core::pose::Pose&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, core::import_pose::ImportPoseOptions const&, bool, core::import_pose::FileType) + 319
+7   libcore.6.dylib                     0x0000000113ce62cf core::import_pose::pose_from_file(core::pose::Pose&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, bool, core::import_pose::FileType) + 79
+8   libcore.6.dylib                     0x0000000113ce6d73 core::import_pose::pose_from_file(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, bool, core::import_pose::FileType) + 115
+9   bootcamp.default.macosclangdebug    0x0000000103fa843e main + 142
+10  dyld                                0x00007ff8188d141f start + 1903
+
+[END_BACKTRACE]
+
+[FILE]: src/core/import_pose/import_pose.cc
+[LINE]: 361
+[START_MESSAGE]
+[ ERROR ] UtilityExitException
+ERROR: Cannot open file "1UBQ.pdb.gz"
+
+
+
+[END_MESSAGE]
+[END_CRASH_REPORT]
+
+##############################################################################################################
+#
+# Rosetta crash log. Please submit the contents of this file to http://crash.rosettacommons.org/
+# or use the script Rosetta/main/source/scripts/python/public/report_crashes.py
+#
+
+[START_CRASH_REPORT]
+[ROSETTA_VERSION]: 0.0.dev0
+[COMMIT_DATE]: 2024-01-29T14:02:41
+[APPLICATION]: bin/rosetta_scripts.macosclangdebug
+[MODE]: Debug
+[EXTRAS]: default
+[OS]: Apple Mac OS X
+[COMPILER]: Clang version "15.0.0 (clang-1500.1.0.2.5)"
+[STDLIB]: libc++ version 160006
+[START_OPTIONS]
+ -in:file:s=../../testFile/1ubq.pdb -parser:protocol=my_awesome_rscript.xml
+
+[END_OPTIONS]
+
+[START_BACKTRACE]: RAW_LIBC
+0   libutility.dylib                    0x0000000130c7eabf backtrace_string(int) + 95
+1   libutility.dylib                    0x0000000130cce7d7 utility::excn::Exception::Exception(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 119
+2   libutility.dylib                    0x0000000130c83e95 utility::UtilityExitException::UtilityExitException(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 117
+3   libutility.dylib                    0x0000000130c83d2b utility::UtilityExitException::UtilityExitException(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 43
+4   libutility.dylib                    0x0000000130c83cba utility::exit(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, int) + 74
+5   libprotocols.1.dylib                0x0000000124c68165 protocols::rosetta_scripts::RosettaScriptsParser::read_in_and_recursively_replace_includes(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>>, unsigned long, bool, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) const + 917
+6   libprotocols.1.dylib                0x0000000124c672ad protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&) + 205
+7   libprotocols.1.dylib                0x0000000124c66e19 protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::options::OptionCollection const&) + 201
+8   libprotocols.1.dylib                0x0000000124c6bd0e protocols::rosetta_scripts::RosettaScriptsParser::generate_mover(std::__1::shared_ptr<protocols::moves::Mover>&, bool, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, bool) + 286
+9   libprotocols.1.dylib                0x0000000124809483 protocols::jd2::JobDistributor::run_one_job(std::__1::shared_ptr<protocols::moves::Mover>&, long, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, unsigned long&, unsigned long&, bool) + 5971
+10  libprotocols.1.dylib                0x0000000124807322 protocols::jd2::JobDistributor::go_main(std::__1::shared_ptr<protocols::moves::Mover>) + 226
+11  libprotocols.1.dylib                0x00000001247feb46 protocols::jd2::FileSystemJobDistributor::go(std::__1::shared_ptr<protocols::moves::Mover>) + 70
+12  rosetta_scripts.default.macosclangd 0x000000010eb8c72c main + 1180
+13  dyld                                0x00007ff8188d141f start + 1903
+
+[END_BACKTRACE]
+
+[FILE]: src/protocols/rosetta_scripts/RosettaScriptsParser.cc
+[LINE]: 618
+[START_MESSAGE]
+[ ERROR ] UtilityExitException
+ERROR: Unable to open RosettaScripts XML file: "my_awesome_rscript.xml".
+
+
+
+[END_MESSAGE]
+[END_CRASH_REPORT]
+
+##############################################################################################################
+#
+# Rosetta crash log. Please submit the contents of this file to http://crash.rosettacommons.org/
+# or use the script Rosetta/main/source/scripts/python/public/report_crashes.py
+#
+
+[START_CRASH_REPORT]
+[ROSETTA_VERSION]: 0.0.dev0
+[COMMIT_DATE]: 2024-01-29T14:02:41
+[APPLICATION]: bin/rosetta_scripts.macosclangdebug
+[MODE]: Debug
+[EXTRAS]: default
+[OS]: Apple Mac OS X
+[COMPILER]: Clang version "15.0.0 (clang-1500.1.0.2.5)"
+[STDLIB]: libc++ version 160006
+[START_OPTIONS]
+ -in:file:s=../../testFile/1ubq.pdb -out:overwrite -parser:protocol=./src/apps/pilot/rui/my_awesome_rscript.xml
+
+[END_OPTIONS]
+
+[START_BACKTRACE]: RAW_LIBC
+0   libutility.dylib                    0x000000012c1c2abf backtrace_string(int) + 95
+1   libutility.dylib                    0x000000012c2127d7 utility::excn::Exception::Exception(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 119
+2   libutility.dylib                    0x000000012c21287b utility::excn::Exception::Exception(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 43
+3   libprotocols.1.dylib                0x00000001201ae406 protocols::rosetta_scripts::RosettaScriptsParser::validate_input_script_against_xsd(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_stringstream<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) const + 2214
+4   libprotocols.1.dylib                0x00000001201acf34 protocols::rosetta_scripts::RosettaScriptsParser::finish_creating_tag(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) const + 372
+5   libprotocols.1.dylib                0x00000001201ab2e6 protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&) + 262
+6   libprotocols.1.dylib                0x00000001201aae19 protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::options::OptionCollection const&) + 201
+7   libprotocols.1.dylib                0x00000001201afd0e protocols::rosetta_scripts::RosettaScriptsParser::generate_mover(std::__1::shared_ptr<protocols::moves::Mover>&, bool, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, bool) + 286
+8   libprotocols.1.dylib                0x000000011fd4d483 protocols::jd2::JobDistributor::run_one_job(std::__1::shared_ptr<protocols::moves::Mover>&, long, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, unsigned long&, unsigned long&, bool) + 5971
+9   libprotocols.1.dylib                0x000000011fd4b322 protocols::jd2::JobDistributor::go_main(std::__1::shared_ptr<protocols::moves::Mover>) + 226
+10  libprotocols.1.dylib                0x000000011fd42b46 protocols::jd2::FileSystemJobDistributor::go(std::__1::shared_ptr<protocols::moves::Mover>) + 70
+11  rosetta_scripts.default.macosclangd 0x000000010a0d072c main + 1180
+12  dyld                                0x00007ff8188d141f start + 1903
+
+[END_BACKTRACE]
+
+[FILE]: src/protocols/rosetta_scripts/RosettaScriptsParser.cc
+[LINE]: 1217
+[START_MESSAGE]
+Input rosetta scripts XML file "./src/apps/pilot/rui/my_awesome_rscript.xml" failed to validate against the rosetta scripts schema. Use the option -parser::output_schema <output filename> to output the schema to a file to see all valid options.
+Your XML has failed validation.  The error message below will tell you where in your XML file the error occurred.  Here's how to fix it:
+
+1) If the validation fails on something obvious, like an illegal attribute due to a spelling error (perhaps you used scorefnction instead of scorefunction), then you need to fix your XML file.
+2) If you haven't run the XML rewriter script and this might be pre-2017 Rosetta XML, run the rewriter script (tools/xsd_xrw/rewrite_rosetta_script.py) on your input XML first.  The attribute values not being in quotes (scorefunction=talaris2014 instead of scorefunction="talaris2014") is a good indicator that this is your problem.
+3) If you are a developer and neither 1 nor 2 worked - email the developer's mailing list or try Slack.
+4) If you are an academic or commercial user - try the Rosetta Forums https://www.rosettacommons.org/forum
+
+
+Error messages were:
+Error: AttValue: " or ' expected
+
+ 5: 	<FILTERS>
+ 6: 	</FILTERS>
+ 7: 	<MOVERS>
+ 8: 		<MinMover name="min_mover" bb="1" chi="1" jump="0" tolerance="0.0001"/>
+ 9: 		<Small name="small_mover" temperature="2.0" nmoves="100" angle_max="10.0" />
+10: 		<PackRotamersMover nloop=(int,"1") scorefxn=(string) task_operations=(string) packer_palette=(named_packer_palette) name=(string)>
+11: 	</MOVERS>
+12: 	<PROTOCOLS>
+13: 		<PackRotamersMover name="pack_rot" task_operations="rtrp"/>
+14: 		<Add mover_name="min_mover"/>
+15: 		<Add mover_name="small_mover"/>
+Error: attributes construct error
+
+ 5: 	<FILTERS>
+ 6: 	</FILTERS>
+ 7: 	<MOVERS>
+ 8: 		<MinMover name="min_mover" bb="1" chi="1" jump="0" tolerance="0.0001"/>
+ 9: 		<Small name="small_mover" temperature="2.0" nmoves="100" angle_max="10.0" />
+10: 		<PackRotamersMover nloop=(int,"1") scorefxn=(string) task_operations=(string) packer_palette=(named_packer_palette) name=(string)>
+11: 	</MOVERS>
+12: 	<PROTOCOLS>
+13: 		<PackRotamersMover name="pack_rot" task_operations="rtrp"/>
+14: 		<Add mover_name="min_mover"/>
+15: 		<Add mover_name="small_mover"/>
+Error: Couldn't find end of Start Tag PackRotamersMover line 10
+
+ 5: 	<FILTERS>
+ 6: 	</FILTERS>
+ 7: 	<MOVERS>
+ 8: 		<MinMover name="min_mover" bb="1" chi="1" jump="0" tolerance="0.0001"/>
+ 9: 		<Small name="small_mover" temperature="2.0" nmoves="100" angle_max="10.0" />
+10: 		<PackRotamersMover nloop=(int,"1") scorefxn=(string) task_operations=(string) packer_palette=(named_packer_palette) name=(string)>
+11: 	</MOVERS>
+12: 	<PROTOCOLS>
+13: 		<PackRotamersMover name="pack_rot" task_operations="rtrp"/>
+14: 		<Add mover_name="min_mover"/>
+15: 		<Add mover_name="small_mover"/>
+------------------------------------------------------------
+Warning messages were:
+------------------------------------------------------------
+
+
+[END_MESSAGE]
+[END_CRASH_REPORT]
+
+##############################################################################################################
+#
+# Rosetta crash log. Please submit the contents of this file to http://crash.rosettacommons.org/
+# or use the script Rosetta/main/source/scripts/python/public/report_crashes.py
+#
+
+[START_CRASH_REPORT]
+[ROSETTA_VERSION]: 0.0.dev0
+[COMMIT_DATE]: 2024-01-29T14:02:41
+[APPLICATION]: bin/rosetta_scripts.macosclangdebug
+[MODE]: Debug
+[EXTRAS]: default
+[OS]: Apple Mac OS X
+[COMPILER]: Clang version "15.0.0 (clang-1500.1.0.2.5)"
+[STDLIB]: libc++ version 160006
+[START_OPTIONS]
+ -in:file:s=../../testFile/1ubq.pdb -out:overwrite -parser:protocol=./src/apps/pilot/rui/my_awesome_rscript.xml
+
+[END_OPTIONS]
+
+[START_BACKTRACE]: RAW_LIBC
+0   libutility.dylib                    0x000000012e9f2abf backtrace_string(int) + 95
+1   libutility.dylib                    0x000000012ea427d7 utility::excn::Exception::Exception(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 119
+2   libutility.dylib                    0x000000012ea4287b utility::excn::Exception::Exception(char const*, int, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 43
+3   libprotocols.1.dylib                0x00000001229de406 protocols::rosetta_scripts::RosettaScriptsParser::validate_input_script_against_xsd(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_stringstream<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) const + 2214
+4   libprotocols.1.dylib                0x00000001229dcf34 protocols::rosetta_scripts::RosettaScriptsParser::finish_creating_tag(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) const + 372
+5   libprotocols.1.dylib                0x00000001229db2e6 protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::vector1<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&) + 262
+6   libprotocols.1.dylib                0x00000001229dae19 protocols::rosetta_scripts::RosettaScriptsParser::create_tag_from_xml(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, utility::options::OptionCollection const&) + 201
+7   libprotocols.1.dylib                0x00000001229dfd0e protocols::rosetta_scripts::RosettaScriptsParser::generate_mover(std::__1::shared_ptr<protocols::moves::Mover>&, bool, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, bool) + 286
+8   libprotocols.1.dylib                0x000000012257d483 protocols::jd2::JobDistributor::run_one_job(std::__1::shared_ptr<protocols::moves::Mover>&, long, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>&, unsigned long&, unsigned long&, bool) + 5971
+9   libprotocols.1.dylib                0x000000012257b322 protocols::jd2::JobDistributor::go_main(std::__1::shared_ptr<protocols::moves::Mover>) + 226
+10  libprotocols.1.dylib                0x0000000122572b46 protocols::jd2::FileSystemJobDistributor::go(std::__1::shared_ptr<protocols::moves::Mover>) + 70
+11  rosetta_scripts.default.macosclangd 0x000000010c90072c main + 1180
+12  dyld                                0x00007ff8188d141f start + 1903
+
+[END_BACKTRACE]
+
+[FILE]: src/protocols/rosetta_scripts/RosettaScriptsParser.cc
+[LINE]: 1217
+[START_MESSAGE]
+Input rosetta scripts XML file "./src/apps/pilot/rui/my_awesome_rscript.xml" failed to validate against the rosetta scripts schema. Use the option -parser::output_schema <output filename> to output the schema to a file to see all valid options.
+Your XML has failed validation.  The error message below will tell you where in your XML file the error occurred.  Here's how to fix it:
+
+1) If the validation fails on something obvious, like an illegal attribute due to a spelling error (perhaps you used scorefnction instead of scorefunction), then you need to fix your XML file.
+2) If you haven't run the XML rewriter script and this might be pre-2017 Rosetta XML, run the rewriter script (tools/xsd_xrw/rewrite_rosetta_script.py) on your input XML first.  The attribute values not being in quotes (scorefunction=talaris2014 instead of scorefunction="talaris2014") is a good indicator that this is your problem.
+3) If you are a developer and neither 1 nor 2 worked - email the developer's mailing list or try Slack.
+4) If you are an academic or commercial user - try the Rosetta Forums https://www.rosettacommons.org/forum
+
+
+Error messages were:
+Error: AttValue: " or ' expected
+
+ 5: 	<FILTERS>
+ 6: 	</FILTERS>
+ 7: 	<MOVERS>
+ 8: 		<MinMover name="min_mover" bb="1" chi="1" jump="0" tolerance="0.0001"/>
+ 9: 		<Small name="small_mover" temperature="2.0" nmoves="100" angle_max="10.0" />
+10: 		<PackRotamersMover name="pack_rot" nloop=100 scorefxn=(string) task_operations="rtrp" packer_palette=(named_packer_palette)>
+11: 
+12: 	</MOVERS>
+13: 	<PROTOCOLS>
+14: 		<Add mover_name="PackRotamersMover"/>
+15: 		<Add mover_name="min_mover"/>
+Error: attributes construct error
+
+ 5: 	<FILTERS>
+ 6: 	</FILTERS>
+ 7: 	<MOVERS>
+ 8: 		<MinMover name="min_mover" bb="1" chi="1" jump="0" tolerance="0.0001"/>
+ 9: 		<Small name="small_mover" temperature="2.0" nmoves="100" angle_max="10.0" />
+10: 		<PackRotamersMover name="pack_rot" nloop=100 scorefxn=(string) task_operations="rtrp" packer_palette=(named_packer_palette)>
+11: 
+12: 	</MOVERS>
+13: 	<PROTOCOLS>
+14: 		<Add mover_name="PackRotamersMover"/>
+15: 		<Add mover_name="min_mover"/>
+Error: Couldn't find end of Start Tag PackRotamersMover line 10
+
+ 5: 	<FILTERS>
+ 6: 	</FILTERS>
+ 7: 	<MOVERS>
+ 8: 		<MinMover name="min_mover" bb="1" chi="1" jump="0" tolerance="0.0001"/>
+ 9: 		<Small name="small_mover" temperature="2.0" nmoves="100" angle_max="10.0" />
+10: 		<PackRotamersMover name="pack_rot" nloop=100 scorefxn=(string) task_operations="rtrp" packer_palette=(named_packer_palette)>
+11: 
+12: 	</MOVERS>
+13: 	<PROTOCOLS>
+14: 		<Add mover_name="PackRotamersMover"/>
+15: 		<Add mover_name="min_mover"/>
+------------------------------------------------------------
+Warning messages were:
+------------------------------------------------------------
+
+
+[END_MESSAGE]
+[END_CRASH_REPORT]
+
