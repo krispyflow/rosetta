@@ -26,6 +26,7 @@
 // XSD Includes
 #include <utility/tag/XMLSchemaGeneration.hh>
 #include <protocols/moves/mover_schemas.hh>
+#include <protocols/loops/loop_closure/ccd/CCDLoopClosureMover.hh>
 
 // Citation Manager
 #include <utility/vector1.hh>
@@ -90,6 +91,20 @@ BootCampMover::apply( core::pose::Pose& mypose){
             mypose->set_phi( randres, orig_phi + pert1 );
             mypose->set_psi( randres, orig_psi + pert2 );
             
+            if ( ftfss.loop_for_residue( randres ) != 0 ) {
+
+                protocols::loops::Loop ranloop = ftfss.loop( ftfss.loop_for_residue( randres ));
+
+                std::cout << "Closing loop: " << ranloop.start()  << " " << ranloop.stop()
+                    << " " << ranloop.cut() << std::endl;
+
+                protocols::loops::loop_closure::ccd::CCDLoopClosureMover ccd(
+                    ranloop, mm );
+                ccd.apply( pose );
+            }
+
+
+
             core::pack::task::PackerTaskOP repack_task =
             core::pack::task::TaskFactory::create_packer_task( mypose );
             repack_task->restrict_to_repacking();

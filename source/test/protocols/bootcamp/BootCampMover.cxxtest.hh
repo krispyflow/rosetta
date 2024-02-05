@@ -20,13 +20,17 @@
 
 #include <test/util/pose_funcs.hh>
 #include <test/core/init_util.hh>
+#include <utility/tag/Tag.hh>
+#include <basic/datacache/DataMap.hh>
 
 #include <utility/vector1.hh>
 #include <core/kinematics/FoldTree.hh>
+#include <core/scoring/ScoreFunction.hh>
 #include <core/scoring/dssp/Dssp.hh>
 #include <protocols/moves/MoverFactory.hh>
 #include <protocols/moves/Mover.hh>
 #include <protocols/bootcamp/BootCampMover.hh>
+#include <protocols/minimization_packing/PackRotamersMover.hh>
 // Utility headers
 
 /// Project headers
@@ -68,14 +72,30 @@ public:
     
     
     // --------------- Test Cases --------------- //
-    void test_hello_world() {
-        
-        protocols::moves::MoverOP base_mover_op = MoverFactory::newMover( "BootCampMover" );
-        protocols::bootcamp::BootCampMoverOP bcm_op = BootCampMoverOP( utility::pointer::dynamic_pointer_cast< protocols::bootcamp::BootCampMover > ( base_mover_op ) );
-        
-        TS_ASSERT( true );
+    void test_BootCampMover() {
+        protocols::bootcamp::BootCampMoverOP bcm_op 
+            = BootCampMoverOP( utility::pointer::dynamic_pointer_cast
+                < protocols::bootcamp::BootCampMover > ( base_mover_op ) );
+
+        TS_ASSERT( protocols::moves::MoverOP base_mover_op 
+            = MoverFactory::newMover( "BootCampMover" ););
+    }
+
+    void test_numItrRead() {
+        basic::datacache::DataMap data;
+        utility::tag::TagCOP tag = utility::tag::tagptr_from_string("<MyTest name=test filter=stubby mover=null reps=4>\n" "</MyTest>");
+
+        protocols::minimization_packing::parse_my_tag(tag, data);
     }
     
+    void test_sfxnRead() {
+
+        basic::datacache::DataMap data;
+        core::scoring::ScoreFunctionOP sfxn = core::scoring::ScoreFunctionOP( new ScoreFunction );
+        data.add( "scorefxns" , "testing123", sfxn );
+
+        TS_ASSERT_EQUALS( sfxn(), my_bootcamp_mover.get_score_function() );        
+    }
     
 };
     

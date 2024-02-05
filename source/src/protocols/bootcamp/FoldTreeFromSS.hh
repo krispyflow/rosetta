@@ -24,6 +24,7 @@
 #include <utility/vector1.hh>
 #include <core/kinematics/FoldTree.hh>
 #include <core/scoring/dssp/Dssp.hh>
+#include <protocols/loops/Loop.hh>
 
 // Utility headers
 
@@ -37,11 +38,28 @@
 
 namespace protocols {
 namespace bootcamp  {
-core::kinematics::FoldTree
-fold_tree_from_ss(core::pose::PoseOP const &mypose);
 
-core::kinematics::FoldTree
-fold_tree_from_dssp_string(std::string const & ss_string);
+class FoldTreeFromSS {
+public:
+   FoldTreeFromSS( std::string const &);
+
+   core::kinematics::FoldTree const &
+   fold_tree() const;
+
+    core::kinematics::FoldTree
+    fold_tree_from_dssp_string(std::string const & ss_string);
+
+   protocols::loops::Loop const &
+   loop( core::Size index ) const;
+
+   core::Size
+   loop_for_residue( core::Size seqpos ) const;
+
+private:
+   core::kinematics::FoldTree ft_;
+   utility::vector1< protocols::loops::Loop > loop_vector_;
+   utility::vector1< core::Size > loop_for_residue_;
+};
 
 }
 }
